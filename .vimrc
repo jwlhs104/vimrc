@@ -5,9 +5,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'zxqfl/tabnine-vim'
 Plug 'vim-airline/vim-airline'
-Plug 'tpope/fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
