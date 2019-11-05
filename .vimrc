@@ -1,8 +1,14 @@
-" Run pathogen
-let g:pathogen_disabled = []
-" call add(g:pathogen_disabled, 'ale')
-execute pathogen#infect()
-
+call plug#begin()
+Plug 'dense-analysis/ale'
+Plug 'yggdroot/indentline'
+Plug 'scrooloose/nerdtree'
+Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'zxqfl/tabnine-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-surround'
+call plug#end()
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
 syntax on
