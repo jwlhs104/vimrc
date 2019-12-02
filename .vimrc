@@ -8,6 +8,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdcommenter'
+Plug 'triglav/vim-visual-increment'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
