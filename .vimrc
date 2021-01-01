@@ -1,5 +1,4 @@
 call plug#begin()
-Plug 'dense-analysis/ale'
 Plug 'yggdroot/indentline'
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
@@ -11,9 +10,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
 Plug 'triglav/vim-visual-increment'
 Plug 'easymotion/vim-easymotion'
+Plug 'wincent/command-t'
 call plug#end()
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
+let g:python_highlight_all = 1
 syntax on
 
 " fugitive
@@ -35,8 +36,11 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Configuring Vim color scheme
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 set background=dark
+set t_Co=256
 colorscheme solarized8
 
 " Setup code for Indentline
@@ -62,6 +66,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" resize split
+nnoremap <Leader>= <C-w>=
+
 " fugitive
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gg :G<CR>
@@ -69,8 +76,8 @@ nnoremap <Leader>gg :G<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " Snippet
-nnoremap <Leader>v :-1read $HOME/.vim/snippet/verilog.v<CR>wi
-nnoremap <Leader>V :-1read $HOME/.vim/snippet/template.vue<CR>jf"a
+nnoremap <Leader>v :find ~/.vimrc<CR>
+nnoremap <Leader>s :source ~/.vimrc<CR>
 " autocomplete {} bracket
 inoremap {<CR> {<CR>}<Esc>ko<Tab>
 
@@ -80,6 +87,8 @@ inoremap <C-k> <CR><Esc>ko<Tab>
 
 " remap <Esc>
 inoremap jh <Esc>
+" remap ;
+nnoremap ; :
 
 " Fix mapping conflict with vim-vue
 autocmd FileType vue inoremap <buffer> <C-k> <CR><Esc>ko
@@ -90,18 +99,6 @@ autocmd FileType vue inoremap <buffer> {<CR> {<CR>}<Esc>ko
 
 " Make tag for tag jumping
 command! MakeTags !ctags -R .
-
-"CleverTab"
-function! CleverTab()
-	if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-		return "\<Tab>"
-	elseif strpart( getline('.'), 1, col('.')-1 ) =~'('
-		return "\<Right>"
-	else
-		return "\<C-N>"
-	endif
-endfunction
-inoremap <Tab> <C-R>=CleverTab()<CR>
 
 " Turn on auto-indent
 set ai
@@ -115,6 +112,10 @@ set expandtab
 set nu
 " When using '/' to search, show result while searching
 set incsearch
+set smartcase
+set hlsearch
+set ignorecase
+nnoremap <CR> :noh<cr>
 " Enable cursorline color
 set cursorline
 " Enable backspace
@@ -125,3 +126,7 @@ set path+=**
 set wildmenu
 " alias clipboard with vim
 set clipboard=unnamed
+set relativenumber
+hi Function guifg=#b58900
+
+hi Normal guibg=NONE ctermbg=NONE
