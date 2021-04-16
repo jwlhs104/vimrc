@@ -6,11 +6,15 @@ Plug 'zxqfl/tabnine-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
 Plug 'triglav/vim-visual-increment'
 Plug 'easymotion/vim-easymotion'
 Plug 'wincent/command-t'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'morhetz/gruvbox'
 call plug#end()
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
@@ -41,7 +45,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 set background=dark
 set t_Co=256
-colorscheme solarized8
+colorscheme gruvbox
 
 " Setup code for Indentline
 set conceallevel=1
@@ -59,12 +63,6 @@ nnoremap <Leader>a :tabprev<CR>
 nnoremap <Leader>d :tabnext<CR>
 nnoremap <Leader>q :tabmove-1<CR>
 nnoremap <Leader>e :tabmove+1<CR>
-
-" Window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 " resize split
 nnoremap <Leader>= <C-w>=
@@ -89,6 +87,7 @@ inoremap <C-k> <CR><Esc>ko<Tab>
 inoremap jh <Esc>
 " remap ;
 nnoremap ; :
+nnoremap <C-s> <C-]>
 
 " Fix mapping conflict with vim-vue
 autocmd FileType vue inoremap <buffer> <C-k> <CR><Esc>ko
@@ -127,6 +126,6 @@ set wildmenu
 " alias clipboard with vim
 set clipboard=unnamed
 set relativenumber
-hi Function guifg=#b58900
+"hi Function guifg=#b58900
 
-hi Normal guibg=NONE ctermbg=NONE
+nnoremap rp :w<CR> :exe "!tmux send -t 1 'python %' Enter"<CR><CR>
