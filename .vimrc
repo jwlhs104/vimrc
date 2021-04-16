@@ -8,6 +8,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
+Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'triglav/vim-visual-increment'
 Plug 'easymotion/vim-easymotion'
@@ -15,6 +16,8 @@ Plug 'wincent/command-t'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'morhetz/gruvbox'
+Plug 'mattn/emmet-vim'
+Plug 'luochen1990/rainbow'
 call plug#end()
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
@@ -24,6 +27,14 @@ syntax on
 " fugitive
 set diffopt+=vertical
 
+" bracket rainbow
+let g:rainbow_active = 1
+" conflict with devicons
+let g:rainbow_conf = {
+	\	'separately': {
+	\		'nerdtree': 0,
+	\	}
+	\}
 " fix vim-vue bug
 autocmd FileType vue syntax sync fromstart
 
@@ -38,6 +49,9 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" setup for emmet
+let g:user_emmet_leader_key=','
 
 " Configuring Vim color scheme
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
