@@ -14,7 +14,6 @@ Plug 'triglav/vim-visual-increment'
 Plug 'easymotion/vim-easymotion'
 Plug 'wincent/command-t'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'yuttie/comfortable-motion.vim'
 Plug 'morhetz/gruvbox'
 Plug 'mattn/emmet-vim'
 Plug 'luochen1990/rainbow'
@@ -139,7 +138,12 @@ set path+=**
 set wildmenu
 " alias clipboard with vim
 set clipboard=unnamed
+" relative number
 set relativenumber
-"hi Function guifg=#b58900
+
+" folding
+set foldmethod=indent
+set foldnestmax=1
+set foldclose=all
 
 nnoremap rp :w<CR> :exe "!tmux send -t 1 'python %' Enter"<CR><CR>
