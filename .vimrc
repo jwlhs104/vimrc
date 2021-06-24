@@ -140,6 +140,8 @@ set wildmenu
 set clipboard=unnamed
 " relative number
 set relativenumber
+" encoding
+set encoding=utf-8
 
 " folding
 set foldmethod=indent
