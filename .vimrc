@@ -147,5 +147,6 @@ set encoding=utf-8
 set foldmethod=indent
 set foldnestmax=1
 set foldclose=all
+set wildignore+=*/node_modules/*
 
 nnoremap rp :w<CR> :exe "!tmux send -t 1 'python %' Enter"<CR><CR>
